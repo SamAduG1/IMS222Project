@@ -10,15 +10,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Materialize CSS 1.0.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <style>
-        /* ── Base overrides ── */
+        /* ── Base ── */
         body {
             background-color: #0a0e1a;
             color: #ccd6f6;
             font-family: 'Inter', sans-serif;
+            padding-bottom: 60px;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -45,95 +46,35 @@
             transition: color 0.3s;
         }
 
-        nav.portfolio-nav ul li a:hover {
+        nav.portfolio-nav ul li a:hover,
+        nav.portfolio-nav ul li a.active {
             color: #64ffda;
             background-color: transparent;
         }
 
-        nav.portfolio-nav ul li a.active {
+        nav.portfolio-nav .sidenav-trigger i {
             color: #64ffda;
         }
 
-        /* Mobile nav icon */
-        nav.portfolio-nav .button-collapse i {
-            color: #64ffda;
-        }
-
-        /* Side nav */
-        #mobile-nav {
+        /* Sidenav */
+        .sidenav {
             background-color: #0d1224;
         }
 
-        #mobile-nav li a {
-            color: #ccd6f6;
+        .sidenav li a {
+            color: #ccd6f6 !important;
         }
 
-        /* ── Hero / Intro card ── */
-        .intro-section {
-            padding: 60px 0 40px;
+        .sidenav li a:hover {
+            color: #64ffda !important;
+            background-color: rgba(100, 255, 218, 0.05) !important;
         }
 
-        .hero-card {
-            background: linear-gradient(135deg, #0d1224 0%, #112240 100%);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 8px;
-            padding: 40px 32px;
+        /* ── Section spacing ── */
+        .portfolio-section {
+            padding: 48px 0 32px;
         }
 
-        .hero-card h1 {
-            color: #ccd6f6;
-            font-size: 2.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .hero-card h1 span {
-            color: #64ffda;
-        }
-
-        .hero-card p {
-            color: #8892b0;
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-top: 12px;
-        }
-
-        .hero-card .role-chip {
-            display: inline-block;
-            background-color: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 20px;
-            padding: 4px 16px;
-            font-size: 0.82rem;
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        /* ── Circular profile image ── */
-        .profile-image-wrap {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .profile-image-wrap img.circle {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border: 4px solid #64ffda;
-            box-shadow: 0 0 30px rgba(100, 255, 218, 0.25);
-        }
-
-        .profile-image-wrap p {
-            color: #64ffda;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-top: 12px;
-        }
-
-        /* ── Section headings ── */
         .section-title {
             color: #64ffda;
             font-family: 'Space Grotesk', sans-serif;
@@ -144,132 +85,72 @@
             margin-bottom: 24px;
         }
 
-        /* ── Skills collection ── */
-        .collection {
-            background-color: #0d1224;
-            border: 1px solid rgba(100, 255, 218, 0.15);
-            border-radius: 6px;
+        .teal-divider {
+            border: none;
+            border-top: 1px solid rgba(100, 255, 218, 0.12);
+            margin: 36px 0;
         }
 
-        .collection .collection-item {
-            background-color: transparent;
-            color: #ccd6f6;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.08);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            padding: 14px 20px;
-        }
-
-        .collection .collection-item:last-child {
-            border-bottom: none;
-        }
-
-        .collection .collection-item i.material-icons {
-            color: #64ffda;
-            margin-right: 10px;
-            vertical-align: middle;
-            font-size: 18px;
-        }
-
-        /* ── Project cards ── */
-        .card {
-            background-color: #0d1224;
-            border: 1px solid rgba(100, 255, 218, 0.15);
+        /* ── Hero card ── */
+        .hero-card {
+            background: linear-gradient(135deg, #0d1224 0%, #112240 100%);
+            border: 1px solid rgba(100, 255, 218, 0.18);
             border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 40px 32px;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        .hero-card h1 {
+            color: #ccd6f6;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
         }
 
-        .card .card-image img {
-            border-radius: 8px 8px 0 0;
+        .hero-card h1 span { color: #64ffda; }
+
+        .hero-card p {
+            color: #8892b0;
+            font-size: 0.96rem;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        .role-chip {
+            display: inline-block;
+            background-color: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            border-radius: 20px;
+            padding: 4px 16px;
+            font-size: 0.82rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        /* ── Circular profile image ── */
+        .profile-image-wrap {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .profile-image-wrap img.circle {
+            width: 200px;
             height: 200px;
             object-fit: cover;
+            border: 4px solid #64ffda;
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.2);
         }
 
-        .card .card-content {
-            padding: 20px;
-        }
-
-        .card .card-title {
-            color: #ccd6f6 !important;
+        .profile-image-wrap p {
+            color: #64ffda;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .card .card-content p {
-            color: #8892b0;
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        .card .card-action {
-            background-color: transparent;
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-            padding: 12px 20px;
-        }
-
-        .card .card-action a {
-            color: #64ffda !important;
-            font-size: 0.82rem;
-            font-family: 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card .card-action a:hover {
-            color: #60a5fa !important;
-        }
-
-        /* Tech badge on card */
-        .tech-badge {
-            display: inline-block;
-            background: rgba(96, 165, 250, 0.1);
-            color: #60a5fa;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 0.75rem;
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 2px 2px 6px 0;
-        }
-
-        /* ── Video section ── */
-        .video-section {
-            padding: 20px 0 40px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-caption {
-            color: #8892b0;
             font-size: 0.85rem;
-            text-align: center;
-            margin-top: 12px;
-            font-style: italic;
+            letter-spacing: 1px;
+            margin-top: 10px;
         }
 
-        /* ── Stats row ── */
+        /* ── Stats ── */
         .stat-card {
             background: linear-gradient(135deg, #0d1224, #112240);
             border: 1px solid rgba(100, 255, 218, 0.15);
@@ -288,23 +169,377 @@
 
         .stat-card .stat-label {
             color: #8892b0;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 4px;
             display: block;
         }
 
-        /* ── Contact CTA ── */
+        /* ── Skills collection ── */
+        .collection {
+            background-color: #0d1224;
+            border: 1px solid rgba(100, 255, 218, 0.15) !important;
+            border-radius: 6px !important;
+        }
+
+        .collection .collection-item {
+            background-color: transparent !important;
+            color: #ccd6f6 !important;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.08) !important;
+            font-size: 0.9rem;
+            padding: 14px 20px;
+        }
+
+        .collection .collection-item:last-child {
+            border-bottom: none !important;
+        }
+
+        .collection .collection-item i.material-icons {
+            color: #64ffda;
+            margin-right: 10px;
+            vertical-align: middle;
+            font-size: 18px;
+        }
+
+        /* ── Basic Carousel ── */
+        .carousel-wrapper {
+            background: #0d1224;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .carousel .carousel-item img {
+            border-radius: 8px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .carousel-controls .btn {
+            background-color: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+        }
+
+        .carousel-controls .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .carousel-tip {
+            color: #8892b0;
+            font-size: 0.82rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ── Collapsible ── */
+        .collapsible {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .collapsible li {
+            margin-bottom: 8px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.12) !important;
+        }
+
+        .collapsible-header {
+            background-color: #0d1224 !important;
+            color: #ccd6f6 !important;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-bottom: none !important;
+            padding: 16px 20px;
+        }
+
+        .collapsible-header i.material-icons {
+            color: #64ffda;
+            margin-right: 10px;
+        }
+
+        .collapsible-header:hover {
+            background-color: rgba(100, 255, 218, 0.05) !important;
+        }
+
+        .collapsible-body {
+            background-color: #0a1628 !important;
+            color: #8892b0 !important;
+            border-top: 1px solid rgba(100, 255, 218, 0.08) !important;
+            padding: 16px 20px;
+        }
+
+        .collapsible-body p {
+            margin: 0;
+            line-height: 1.75;
+            font-size: 0.92rem;
+        }
+
+        /* ── Full-width carousel ── */
+        .fw-carousel-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            margin-top: 16px;
+        }
+
+        .carousel.carousel-slider .carousel-item img {
+            height: 360px;
+            object-fit: cover;
+        }
+
+        /* Carousel indicators */
+        .carousel.carousel-slider .indicators .indicator-item {
+            background-color: rgba(100, 255, 218, 0.3);
+        }
+
+        .carousel.carousel-slider .indicators .indicator-item.active {
+            background-color: #64ffda;
+        }
+
+        /* ── Radio Section ── */
+        .radio-card {
+            background: linear-gradient(135deg, #0d1224, #112240);
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+
+        .radio-card h5 {
+            color: #ccd6f6;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        [type="radio"]:checked + span,
+        [type="radio"]:not(:checked) + span {
+            color: #ccd6f6 !important;
+            font-family: 'Inter', sans-serif;
+        }
+
+        [type="radio"]:checked + span:before,
+        [type="radio"]:checked + span:after {
+            border-color: #64ffda !important;
+            background-color: #64ffda !important;
+        }
+
+        [type="radio"]:not(:checked) + span:before {
+            border-color: rgba(100, 255, 218, 0.4) !important;
+        }
+
+        #visitor-response {
+            margin-top: 18px;
+            padding: 14px 18px;
+            background: rgba(100, 255, 218, 0.06);
+            border-left: 3px solid #64ffda;
+            border-radius: 0 6px 6px 0;
+            color: #ccd6f6;
+            font-size: 0.93rem;
+            display: none;
+        }
+
+        /* ── Subscribe Section ── */
+        .subscribe-card {
+            background: linear-gradient(135deg, #0d1224, #112240);
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            border-radius: 10px;
+            padding: 28px 32px;
+        }
+
+        .subscribe-card h5 {
+            color: #ccd6f6;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .subscribe-card p {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .input-field input {
+            color: #ccd6f6 !important;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.3) !important;
+        }
+
+        .input-field input:focus {
+            border-bottom: 1px solid #64ffda !important;
+            box-shadow: 0 1px 0 0 #64ffda !important;
+        }
+
+        .input-field label {
+            color: #8892b0 !important;
+        }
+
+        .input-field label.active {
+            color: #64ffda !important;
+        }
+
+        .subscribe-card .btn {
+            background-color: #64ffda;
+            color: #0a0e1a;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+        }
+
+        .subscribe-card .btn:hover {
+            background-color: #4fe8c2;
+        }
+
+        #email-response {
+            margin-top: 14px;
+            color: #64ffda;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* ── Modal ── */
+        .modal {
+            background-color: #0d1224 !important;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+        }
+
+        .modal .modal-content h4 {
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .modal .modal-content p {
+            color: #ccd6f6;
+        }
+
+        .modal .modal-footer {
+            background-color: #0d1224 !important;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .modal .modal-footer a {
+            color: #64ffda !important;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        /* ── Project Cards ── */
+        .card {
+            background-color: #0d1224;
+            border: 1px solid rgba(100, 255, 218, 0.12);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card .card-image img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card .card-title {
+            color: #ccd6f6 !important;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-shadow: none !important;
+        }
+
+        .card .card-content {
+            padding: 18px;
+        }
+
+        .card .card-content p {
+            color: #8892b0;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        .card .card-action {
+            background-color: transparent;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            padding: 12px 18px;
+        }
+
+        .card .card-action a {
+            color: #64ffda !important;
+            font-size: 0.82rem;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card .card-action a:hover {
+            color: #60a5fa !important;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: rgba(96, 165, 250, 0.1);
+            color: #60a5fa;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.74rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 2px 2px 6px 0;
+        }
+
+        /* ── Video ── */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            color: #8892b0;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ── CTA ── */
         .cta-section {
             text-align: center;
-            padding: 40px 0 60px;
+            padding: 48px 24px;
+            background: linear-gradient(135deg, #0d1224, #112240);
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.15);
         }
 
         .cta-section h3 {
             color: #ccd6f6;
             font-size: 1.8rem;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .cta-section p {
@@ -312,42 +547,36 @@
             margin-bottom: 28px;
         }
 
-        .btn-cta {
-            background-color: transparent;
-            color: #64ffda;
-            border: 1px solid #64ffda;
-            border-radius: 4px;
-            padding: 0 28px;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: background-color 0.3s, color 0.3s;
-            margin: 6px;
-        }
-
-        .btn-cta:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-        }
-
         .btn-cta-filled {
             background-color: #64ffda;
             color: #0a0e1a;
-            border: 1px solid #64ffda;
             border-radius: 4px;
-            padding: 0 28px;
             font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: opacity 0.3s;
+            letter-spacing: 0.5px;
             margin: 6px;
         }
 
         .btn-cta-filled:hover {
             background-color: #4fe8c2;
-            color: #0a0e1a;
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin: 6px;
+        }
+
+        .btn-cta-outline:hover {
+            background-color: rgba(100, 255, 218, 0.08);
+            color: #64ffda;
         }
 
         /* ── Footer ── */
@@ -355,6 +584,7 @@
             background-color: #0d1224;
             border-top: 1px solid rgba(100, 255, 218, 0.1);
             padding-top: 24px;
+            margin-top: 40px;
         }
 
         footer.page-footer .footer-copyright {
@@ -363,37 +593,27 @@
             font-size: 0.85rem;
         }
 
-        footer.page-footer a {
-            color: #64ffda;
-        }
-
-        /* ── Divider ── */
-        .teal-divider {
-            border: none;
-            border-top: 1px solid rgba(100, 255, 218, 0.15);
-            margin: 32px 0;
-        }
-
-        /* ── Responsive tweaks ── */
-        @media (max-width: 600px) {
-            .hero-card h1 {
-                font-size: 1.8rem;
-            }
-
-            .profile-image-wrap img.circle {
-                width: 160px;
-                height: 160px;
-            }
-        }
+        footer.page-footer a { color: #64ffda; }
     </style>
 </head>
 <body>
+
+    <!-- Modal (required by subscribe form) -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>You're subscribed!</h4>
+            <p id="modal-content-text"></p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect btn-flat">Got it</a>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="portfolio-nav" role="navigation">
         <div class="nav-wrapper container">
             <a href="index.html" class="brand-logo">SAG</a>
-            <a href="#" data-activates="mobile-nav" class="button-collapse">
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="right hide-on-med-and-down">
@@ -403,92 +623,63 @@
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="materialize.html" class="active">Profile</a></li>
             </ul>
-            <ul class="side-nav" id="mobile-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="materialize.html">Profile</a></li>
-            </ul>
         </div>
     </nav>
+
+    <!-- Sidenav for mobile -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="materialize.html">Profile</a></li>
+    </ul>
 
     <main>
         <div class="container">
 
-            <!-- Intro Section -->
-            <section class="intro-section">
+            <!-- Intro -->
+            <section class="portfolio-section">
                 <div class="row valign-wrapper">
-
-                    <!-- Text side -->
                     <div class="col s12 m8">
                         <div class="hero-card">
                             <span class="role-chip">Available Summer / Fall 2026</span>
                             <h1>Sam <span>Adu-Gyapong</span></h1>
                             <h5 style="color:#60a5fa; font-family:'Space Grotesk',sans-serif; font-weight:400; margin-top:0;">Full Stack Developer</h5>
                             <p>
-                                I'm a Software Engineering student at Miami University graduating May 2026.
+                                Software Engineering student at Miami University graduating May 2026.
                                 I build full-stack web applications using React, Flask, and PostgreSQL,
                                 and I deploy everything I make to real production environments.
-                                My work spans sports analytics, productivity tools, real-time games, and health data visualization.
-                            </p>
-                            <p>
-                                I care about shipping products that actually work for real users, not just demo builds.
-                                Every project I take on starts with understanding the problem before writing a single line of code.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Circular image side -->
                     <div class="col s12 m4">
+                        <!-- Materialize circular image -->
                         <div class="profile-image-wrap">
-                            <!-- Materialize circular image component -->
-                            <img src="images/profile.jpg" alt="Sam Adu-Gyapong profile photo" class="circle responsive-img">
+                            <img src="images/profile.jpg" alt="Sam Adu-Gyapong" class="circle responsive-img">
                             <p>Sam Adu-Gyapong</p>
                         </div>
                     </div>
-
                 </div>
             </section>
 
             <hr class="teal-divider">
 
-            <!-- Stats Row -->
-            <section>
+            <!-- Stats -->
+            <section class="portfolio-section" style="padding-top:0;">
                 <div class="row">
-                    <div class="col s6 m3">
-                        <div class="stat-card">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Projects Deployed</span>
-                        </div>
-                    </div>
-                    <div class="col s6 m3">
-                        <div class="stat-card">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Years Coding</span>
-                        </div>
-                    </div>
-                    <div class="col s6 m3">
-                        <div class="stat-card">
-                            <span class="stat-number">6</span>
-                            <span class="stat-label">Languages</span>
-                        </div>
-                    </div>
-                    <div class="col s6 m3">
-                        <div class="stat-card">
-                            <span class="stat-number">2026</span>
-                            <span class="stat-label">Graduation</span>
-                        </div>
-                    </div>
+                    <div class="col s6 m3"><div class="stat-card"><span class="stat-number">4</span><span class="stat-label">Projects Deployed</span></div></div>
+                    <div class="col s6 m3"><div class="stat-card"><span class="stat-number">4+</span><span class="stat-label">Years Coding</span></div></div>
+                    <div class="col s6 m3"><div class="stat-card"><span class="stat-number">6</span><span class="stat-label">Languages</span></div></div>
+                    <div class="col s6 m3"><div class="stat-card"><span class="stat-number">2026</span><span class="stat-label">Graduation</span></div></div>
                 </div>
             </section>
 
             <hr class="teal-divider">
 
-            <!-- Skills Section -->
-            <section>
+            <!-- Skills -->
+            <section class="portfolio-section" style="padding-top:0;">
                 <div class="row">
-
                     <div class="col s12 m4">
                         <p class="section-title">Languages</p>
                         <ul class="collection">
@@ -500,7 +691,6 @@
                             <li class="collection-item"><i class="material-icons">code</i>HTML &amp; CSS</li>
                         </ul>
                     </div>
-
                     <div class="col s12 m4">
                         <p class="section-title">Frameworks</p>
                         <ul class="collection">
@@ -511,7 +701,6 @@
                             <li class="collection-item"><i class="material-icons">layers</i>Bootstrap</li>
                         </ul>
                     </div>
-
                     <div class="col s12 m4">
                         <p class="section-title">Tools &amp; Platforms</p>
                         <ul class="collection">
@@ -522,90 +711,301 @@
                             <li class="collection-item"><i class="material-icons">build</i>Render</li>
                         </ul>
                     </div>
-
                 </div>
             </section>
 
             <hr class="teal-divider">
 
-            <!-- Featured Projects Cards -->
-            <section>
+            <!-- ═══════════════════════════════════════
+                 FULL-WIDTH CAROUSEL SLIDER
+                 Customize: swap image srcs for your own project screenshots.
+                 fullWidth: true makes it span the container.
+                 indicators: true shows the dot navigation.
+                 Autoplay is toggled via the button below.
+            ════════════════════════════════════════ -->
+            <section class="portfolio-section" style="padding-top:0;">
+                <p class="section-title">Projects at a Glance</p>
+
+                <div class="carousel-controls">
+                    <button id="fwPrev" class="btn waves-effect waves-light">
+                        <i class="material-icons left">chevron_left</i>Prev
+                    </button>
+                    <button id="fwNext" class="btn waves-effect waves-light">
+                        Next<i class="material-icons right">chevron_right</i>
+                    </button>
+                    <button id="fwToggle" class="btn waves-effect waves-light">
+                        <i class="material-icons left">play_arrow</i>Autoplay
+                    </button>
+                </div>
+
+                <div class="fw-carousel-wrapper">
+                    <div class="carousel carousel-slider" id="fullWidthCarousel">
+                        <a class="carousel-item" href="projects.html#statscout">
+                            <img alt="StatScout analytics platform" src="images/statscout.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#applytrack">
+                            <img alt="ApplyTrack job tracker" src="images/applytrack.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#buzzbeats">
+                            <img alt="BuzzBeats music quiz game" src="images/buzzbeats.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#capstone">
+                            <img alt="Multi-Sensor Data Visualization Toolkit" src="images/capstone.png" />
+                        </a>
+                    </div>
+                </div>
+                <p class="carousel-tip">Click any slide to jump to that project's details.</p>
+            </section>
+
+            <hr class="teal-divider">
+
+            <!-- ═══════════════════════════════════════
+                 COLLAPSIBLE
+                 Customize: change the question text, icon names, and body content.
+                 accordion: true means only one item open at a time.
+                 accordion: false allows multiple open simultaneously.
+                 Available Material Icon names: https://fonts.google.com/icons
+            ════════════════════════════════════════ -->
+            <section class="portfolio-section" style="padding-top:0;">
+                <p class="section-title">Frequently Asked</p>
+
+                <ul class="collapsible" id="demoCollapsible">
+                    <li class="active">
+                        <div class="collapsible-header">
+                            <i class="material-icons">code</i>
+                            What is your primary tech stack?
+                        </div>
+                        <div class="collapsible-body">
+                            <p>
+                                On the frontend I work primarily in <strong style="color:#64ffda;">React</strong> and <strong style="color:#64ffda;">Next.js</strong>.
+                                On the backend I use <strong style="color:#64ffda;">Flask</strong> (Python) to build clean REST APIs.
+                                For databases I use <strong style="color:#64ffda;">PostgreSQL</strong> managed through Supabase,
+                                with deployments on Vercel (frontend) and Render (backend).
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">work</i>
+                            What types of roles are you targeting?
+                        </div>
+                        <div class="collapsible-body">
+                            <p>
+                                I'm actively seeking <strong style="color:#64ffda;">full-time software engineering roles</strong> starting Summer or Fall 2026.
+                                My focus is on full-stack development and product-focused engineering teams.
+                                I'm open to remote, hybrid, or in-person positions and I'm comfortable in both startup and larger company environments.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">lightbulb_outline</i>
+                            How do you approach a new project?
+                        </div>
+                        <div class="collapsible-body">
+                            <p>
+                                I always start by asking <em style="color:#64ffda;">"what problem is this solving and for whom?"</em>
+                                before writing a single line of code. From there I design the data model, build out the backend API,
+                                then construct the frontend on top of it. Every project I build gets deployed to a real production URL,
+                                because I believe shipping live products is what separates learning from actually doing.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">school</i>
+                            Tell me about your capstone project.
+                        </div>
+                        <div class="collapsible-body">
+                            <p>
+                                My senior capstone is a <strong style="color:#64ffda;">Multi-Sensor Data Visualization Toolkit</strong> built
+                                with Python, Dash, and Plotly for a health research partner at Miami University.
+                                It processes real-world sensor data from health monitoring wearables, applies machine learning
+                                anomaly detection, and presents findings in an interactive dashboard designed for non-technical researchers.
+                                We follow Agile methodology with two-week sprints and a GitLab CI/CD pipeline.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <hr class="teal-divider">
+
+            <!-- ═══════════════════════════════════════
+                 BASIC CAROUSEL
+                 Customize: swap image srcs, adjust numVisible (how many items show at once),
+                 dist (negative = items overlap/fan out), shift (offset of center item).
+                 The "Go to #3" button demonstrates programmatic navigation using set(index).
+            ════════════════════════════════════════ -->
+            <section class="portfolio-section" style="padding-top:0;">
+                <p class="section-title">Project Showcase</p>
+
+                <div class="carousel-controls">
+                    <button id="basicPrev" class="btn waves-effect waves-light">
+                        <i class="material-icons left">chevron_left</i>Prev
+                    </button>
+                    <button id="basicNext" class="btn waves-effect waves-light">
+                        Next<i class="material-icons right">chevron_right</i>
+                    </button>
+                    <button id="basicGo3" class="btn waves-effect waves-light">
+                        <i class="material-icons left">filter_3</i>StatScout
+                    </button>
+                </div>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel" id="basicCarousel">
+                        <a class="carousel-item" href="projects.html#statscout">
+                            <img alt="StatScout analytics platform" src="images/statscout.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#applytrack">
+                            <img alt="ApplyTrack job tracker" src="images/applytrack.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#buzzbeats">
+                            <img alt="BuzzBeats music quiz" src="images/buzzbeats.png" />
+                        </a>
+                        <a class="carousel-item" href="projects.html#capstone">
+                            <img alt="Capstone data toolkit" src="images/capstone.png" />
+                        </a>
+                    </div>
+                </div>
+                <p class="carousel-tip">Drag or swipe to browse. Click a card to view project details.</p>
+            </section>
+
+            <hr class="teal-divider">
+
+            <!-- ═══════════════════════════════════════
+                 RADIO BUTTON INTERACTION
+                 Customize: change the question text, the radio option values/labels,
+                 and the response messages inside displayVisitorIntent() below.
+            ════════════════════════════════════════ -->
+            <section class="portfolio-section" style="padding-top:0;">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="radio-card">
+                            <h5>What brings you here today?</h5>
+                            <form>
+                                <p>
+                                    <label>
+                                        <input name="intent" type="radio" value="hire" onclick="displayVisitorIntent()" />
+                                        <span>I'm looking to hire</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="intent" type="radio" value="collab" onclick="displayVisitorIntent()" />
+                                        <span>I want to collaborate</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="intent" type="radio" value="explore" onclick="displayVisitorIntent()" />
+                                        <span>Just exploring</span>
+                                    </label>
+                                </p>
+                            </form>
+                            <div id="visitor-response"></div>
+                        </div>
+                    </div>
+
+            <!-- ═══════════════════════════════════════
+                 EMAIL SUBSCRIBE FORM
+                 Customize: change the heading, subtext, and the thank-you messages
+                 inside submitEmail() and the modal content below.
+                 The modal fires on successful submission.
+            ════════════════════════════════════════ -->
+                    <div class="col s12 m6">
+                        <div class="subscribe-card">
+                            <h5>Stay in the Loop</h5>
+                            <p>Get notified when I launch new projects or share updates.</p>
+                            <form onsubmit="submitEmail(event)">
+                                <div class="input-field">
+                                    <input id="email" type="email" required>
+                                    <label for="email">Your email address</label>
+                                </div>
+                                <button type="submit" class="btn waves-effect waves-light">
+                                    Subscribe<i class="material-icons right">send</i>
+                                </button>
+                            </form>
+                            <div id="email-response"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="teal-divider">
+
+            <!-- Featured Project Cards -->
+            <section class="portfolio-section" style="padding-top:0;">
                 <p class="section-title">Featured Projects</p>
                 <div class="row">
-
                     <div class="col s12 m4">
                         <div class="card">
                             <div class="card-image">
                                 <img src="images/statscout.png" alt="StatScout screenshot">
+                                <span class="card-title">StatScout</span>
                             </div>
                             <div class="card-content">
-                                <span class="card-title">StatScout</span>
                                 <div>
                                     <span class="tech-badge">React</span>
                                     <span class="tech-badge">Flask</span>
                                     <span class="tech-badge">PostgreSQL</span>
                                 </div>
-                                <p>Multi-sport analytics platform with real-time odds, hit rates, and trust scores across NBA and soccer markets.</p>
+                                <p>Multi-sport analytics platform with real-time odds, hit rates, and trust scores.</p>
                             </div>
                             <div class="card-action">
                                 <a href="https://statscout.vercel.app/" target="_blank">Live Site</a>
-                                <a href="projects.html">Details</a>
+                                <a href="projects.html#statscout">Details</a>
                             </div>
                         </div>
                     </div>
-
                     <div class="col s12 m4">
                         <div class="card">
                             <div class="card-image">
                                 <img src="images/applytrack.png" alt="ApplyTrack screenshot">
+                                <span class="card-title">ApplyTrack</span>
                             </div>
                             <div class="card-content">
-                                <span class="card-title">ApplyTrack</span>
                                 <div>
                                     <span class="tech-badge">React</span>
                                     <span class="tech-badge">Flask</span>
                                     <span class="tech-badge">JWT</span>
                                 </div>
-                                <p>Full-stack job application tracker with Kanban board, dashboard analytics, and secure JWT authentication.</p>
+                                <p>Full-stack job application tracker with Kanban board and dashboard analytics.</p>
                             </div>
                             <div class="card-action">
                                 <a href="https://job-tracker-three-ochre.vercel.app/" target="_blank">Live Site</a>
-                                <a href="projects.html">Details</a>
+                                <a href="projects.html#applytrack">Details</a>
                             </div>
                         </div>
                     </div>
-
                     <div class="col s12 m4">
                         <div class="card">
                             <div class="card-image">
                                 <img src="images/buzzbeats.png" alt="BuzzBeats screenshot">
+                                <span class="card-title">BuzzBeats</span>
                             </div>
                             <div class="card-content">
-                                <span class="card-title">BuzzBeats</span>
                                 <div>
                                     <span class="tech-badge">Next.js</span>
                                     <span class="tech-badge">WebSockets</span>
-                                    <span class="tech-badge">Node.js</span>
                                 </div>
-                                <p>Real-time multiplayer music quiz game with lobby system, live scoring, and host-player format.</p>
+                                <p>Real-time multiplayer music quiz game with lobby system and live scoring.</p>
                             </div>
                             <div class="card-action">
-                                <a href="projects.html">Details</a>
+                                <a href="projects.html#buzzbeats">Details</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 
             <hr class="teal-divider">
 
-            <!-- Video Section -->
-            <section class="video-section">
+            <!-- Video -->
+            <section class="portfolio-section" style="padding-top:0;">
                 <p class="section-title">What Drives Me</p>
                 <div class="row">
                     <div class="col s12 m8 offset-m2">
-                        <!-- Materialize responsive video embed -->
                         <div class="video-container">
                             <iframe
                                 src="https://www.youtube.com/embed/8aGhZQkoFbQ"
@@ -614,19 +1014,21 @@
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <p class="video-caption">A look at what full-stack software engineering actually looks like day to day.</p>
+                        <p class="video-caption">A look at what full-stack software engineering looks like day to day.</p>
                     </div>
                 </div>
             </section>
 
             <hr class="teal-divider">
 
-            <!-- Contact CTA -->
-            <section class="cta-section">
-                <h3>Let's Build Something Together</h3>
-                <p>Open to full-time roles, internships, and collaboration starting Summer / Fall 2026.</p>
-                <a href="contact.html" class="btn btn-large btn-cta-filled waves-effect waves-light">Get In Touch</a>
-                <a href="projects.html" class="btn btn-large btn-cta waves-effect">View Projects</a>
+            <!-- CTA -->
+            <section class="portfolio-section" style="padding-top:0; padding-bottom:0;">
+                <div class="cta-section">
+                    <h3>Let's Build Something Together</h3>
+                    <p>Open to full-time roles, internships, and collaboration starting Summer / Fall 2026.</p>
+                    <a href="contact.html" class="btn btn-large btn-cta-filled waves-effect waves-light">Get In Touch</a>
+                    <a href="projects.html" class="btn btn-large btn-cta-outline waves-effect">View Projects</a>
+                </div>
             </section>
 
         </div>
@@ -657,16 +1059,127 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- Materialize JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- Materialize JS 1.0.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            // Initialize mobile nav
-            $('.button-collapse').sideNav();
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Sidenav (mobile nav) ──
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+
+            // ── Modal init ──
+            M.Modal.init(document.querySelectorAll('.modal'));
+
+            // ═══════════════════════════════════════
+            // BASIC CAROUSEL init
+            // Customize: numVisible = how many slides show at once,
+            // dist = negative value fans items out behind center,
+            // duration = transition speed in ms
+            // ═══════════════════════════════════════
+            const basicElem = document.querySelector('#basicCarousel');
+            const basicInstance = M.Carousel.init(basicElem, {
+                duration: 200,
+                dist: -80,
+                shift: 0,
+                padding: 0,
+                numVisible: 3,
+                indicators: false
+            });
+
+            document.querySelector('#basicPrev').addEventListener('click', () => basicInstance.prev());
+            document.querySelector('#basicNext').addEventListener('click', () => basicInstance.next());
+            // set(2) = go to index 2 (0-based), which is the third item (StatScout = index 0 here would be first)
+            document.querySelector('#basicGo3').addEventListener('click', () => basicInstance.set(0));
+
+            // ═══════════════════════════════════════
+            // COLLAPSIBLE init
+            // accordion: true  = only one open at a time
+            // accordion: false = multiple can be open simultaneously
+            // ═══════════════════════════════════════
+            M.Collapsible.init(document.querySelector('#demoCollapsible'), {
+                accordion: true
+            });
+
+            // ═══════════════════════════════════════
+            // FULL-WIDTH CAROUSEL SLIDER init
+            // fullWidth: true  = spans the full container width
+            // indicators: true = shows dot navigation below
+            // ═══════════════════════════════════════
+            const fwElem = document.querySelector('#fullWidthCarousel');
+            const fwInstance = M.Carousel.init(fwElem, {
+                fullWidth: true,
+                indicators: true
+            });
+
+            document.querySelector('#fwPrev').addEventListener('click', () => fwInstance.prev());
+            document.querySelector('#fwNext').addEventListener('click', () => fwInstance.next());
+
+            // Autoplay toggle for full-width carousel
+            let autoplayOn = false;
+            let autoplayTimer = null;
+
+            function startAutoplay() {
+                autoplayTimer = setInterval(() => fwInstance.next(), 3000);
+                autoplayOn = true;
+                document.querySelector('#fwToggle').innerHTML =
+                    '<i class="material-icons left">pause</i>Autoplay';
+            }
+
+            function stopAutoplay() {
+                clearInterval(autoplayTimer);
+                autoplayTimer = null;
+                autoplayOn = false;
+                document.querySelector('#fwToggle').innerHTML =
+                    '<i class="material-icons left">play_arrow</i>Autoplay';
+            }
+
+            document.querySelector('#fwToggle').addEventListener('click', () => {
+                if (autoplayOn) stopAutoplay();
+                else startAutoplay();
+            });
         });
+
+        // ═══════════════════════════════════════
+        // RADIO BUTTON: displayVisitorIntent()
+        // Customize: change the response messages for each value below.
+        // Values must match the value="" attributes on the radio inputs above.
+        // ═══════════════════════════════════════
+        function displayVisitorIntent() {
+            const selected = document.querySelector('input[name="intent"]:checked').value;
+            const responseEl = document.getElementById('visitor-response');
+
+            const messages = {
+                hire:    "Great! I'm actively seeking full-time engineering roles starting Summer / Fall 2026. Feel free to reach out via email or LinkedIn.",
+                collab:  "Awesome! I'm always open to interesting collaborations. Reach out through the contact page and let's talk about your idea.",
+                explore: "Welcome! Feel free to browse my projects and get in touch if anything catches your eye."
+            };
+
+            responseEl.innerText = messages[selected] || '';
+            responseEl.style.display = 'block';
+        }
+
+        // ═══════════════════════════════════════
+        // EMAIL SUBSCRIBE: submitEmail()
+        // Customize: change the thank-you message text and the modal heading in the HTML above.
+        // ═══════════════════════════════════════
+        function submitEmail(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+
+            // Inline confirmation
+            document.getElementById('email-response').innerText =
+                'Thanks! Updates will be sent to: ' + email;
+
+            // Clear the input
+            document.getElementById('email').value = '';
+
+            // Fire the modal with a personalized message
+            const modalText = document.getElementById('modal-content-text');
+            modalText.innerText =
+                'You\'re on the list! I\'ll send updates on new projects and launches to ' + email + '.';
+            M.Modal.getInstance(document.getElementById('modal1')).open();
+        }
     </script>
 
 </body>
