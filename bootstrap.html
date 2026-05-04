@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap Exercises - Sam Adu-Gyapong Portfolio">
+    <title>Bootstrap | Sam Adu-Gyapong</title>
+
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0a0e1a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Exercise dividers */
+        .exercise-block {
+            margin-bottom: 48px;
+        }
+
+        .exercise-label {
+            display: inline-block;
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72em;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .exercise-block h2 {
+            color: #e2e8f0;
+            font-size: 1.3em;
+            margin-bottom: 4px;
+        }
+
+        .exercise-block .ex-desc {
+            color: #94a3b8;
+            font-size: 0.88em;
+            margin-bottom: 18px;
+        }
+
+        /* Dark card panels for exercises 1, 2, 3, 7 */
+        .dark-panel {
+            background-color: #0d1224;
+            border: 1px solid rgba(100, 255, 218, 0.12);
+            color: #e2e8f0;
+            border-radius: 8px;
+        }
+
+        /* Page header */
+        #bs-hero {
+            padding: 44px 0 28px;
+            border-bottom: 1px solid rgba(100,255,218,0.1);
+            margin-bottom: 36px;
+        }
+
+        #bs-hero h1 { color: #e2e8f0; }
+        #bs-hero p  { color: #94a3b8; max-width: 640px; }
+
+        /* Exercise 3 overrides */
+        .ex3-primary {
+            background-color: #1e3a5f !important;
+            color: #e2e8f0 !important;
+        }
+
+        .ex3-secondary {
+            background-color: #112240 !important;
+            color: #94a3b8 !important;
+        }
+
+        /* Exercise 4 navbar */
+        #ex4-nav.navbar {
+            background-color: #060a14 !important;
+            border-bottom: 1px solid rgba(100,255,218,0.15);
+        }
+
+        #ex4-nav .navbar-brand {
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        #ex4-nav .nav-link { color: #94a3b8; }
+        #ex4-nav .nav-link:hover,
+        #ex4-nav .nav-link.active { color: #64ffda; }
+
+        /* Exercise 5 cards */
+        .ex5-card {
+            background-color: #0d1224;
+            border: 1px solid rgba(100,255,218,0.12);
+        }
+
+        .ex5-card .card-title { color: #e2e8f0; font-family: 'Space Grotesk', sans-serif; }
+        .ex5-card .card-text  { color: #94a3b8; font-size: 0.88em; }
+        .ex5-card .card-img-top { height: 170px; object-fit: cover; }
+
+        .ex5-card .btn-primary {
+            background-color: #64ffda;
+            border-color: #64ffda;
+            color: #0a0e1a;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .ex5-card .btn-primary:hover {
+            background-color: #4de8c4;
+            border-color: #4de8c4;
+            color: #0a0e1a;
+        }
+
+        /* Exercise 6 modal */
+        .modal-content {
+            background-color: #0d1224;
+            border: 1px solid rgba(100,255,218,0.2);
+            color: #e2e8f0;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(100,255,218,0.1);
+        }
+
+        .modal-title { font-family: 'Space Grotesk', sans-serif; color: #64ffda; }
+
+        .modal-footer {
+            border-top: 1px solid rgba(100,255,218,0.1);
+        }
+
+        .btn-close { filter: invert(1); }
+
+        /* Exercise 7 blocks */
+        .ex7-block {
+            background-color: #0d1224;
+            border: 1px solid rgba(100,255,218,0.12);
+            color: #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        /* Bonus form */
+        .form-control {
+            background-color: #0d1224;
+            border: 1px solid rgba(100,255,218,0.2);
+            color: #e2e8f0;
+        }
+
+        .form-control::placeholder { color: #8892b0; opacity: 0.7; }
+
+        .form-control:focus {
+            background-color: #0d1224;
+            border-color: #64ffda;
+            color: #e2e8f0;
+            box-shadow: 0 0 0 0.2rem rgba(100,255,218,0.15);
+        }
+
+        .form-label { color: #94a3b8; font-size: 0.88em; }
+
+        #bonus-submit {
+            background-color: #64ffda;
+            border-color: #64ffda;
+            color: #0a0e1a;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        #bonus-submit:hover {
+            background-color: #4de8c4;
+            border-color: #4de8c4;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(100,255,218,0.1);
+            padding: 28px 0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88em;
+            margin-top: 60px;
+        }
+
+        footer a { color: #64ffda; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Site nav */
+        .site-nav {
+            background-color: #060a14;
+            border-bottom: 1px solid rgba(100,255,218,0.1);
+            padding: 14px 0;
+        }
+
+        .site-nav .inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-nav .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #64ffda;
+            text-decoration: none;
+        }
+
+        .site-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 24px;
+        }
+
+        .site-nav ul a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+
+        .site-nav ul a:hover,
+        .site-nav ul a.active { color: #64ffda; }
+
+        hr.ex-divider {
+            border: none;
+            border-top: 1px solid rgba(100,255,218,0.08);
+            margin: 0 0 36px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Site Navigation -->
+    <div class="site-nav">
+        <div class="inner">
+            <a href="index.html" class="logo">SAG</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="jquery.html">jQuery</a></li>
+                <li><a href="bootstrap.html" class="active">Bootstrap</a></li>
+                <li><a href="materialize.html">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 1100px;">
+
+        <!-- Page Header -->
+        <div id="bs-hero">
+            <h1>Bootstrap Exercises</h1>
+            <p>
+                Seven exercises demonstrating Bootstrap 5.3.2 layouts, components, and utilities,
+                each customized for this developer portfolio. Bootstrap CSS and JavaScript are loaded via CDN.
+                No custom CSS is needed for the grid or components.
+            </p>
+        </div>
+
+
+        <!-- ═══════════════════════════════════════
+             Exercise 1: Responsive 3-Column Layout
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 1 — Responsive Grid</span>
+            <h2>3-Column Skills Layout</h2>
+            <p class="ex-desc">Full-width on mobile, three equal columns on medium screens and up.</p>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <div class="dark-panel p-4">
+                        <h5 style="color:#64ffda;">Frontend</h5>
+                        <p style="color:#94a3b8; margin:0; font-size:0.9em;">
+                            React, Next.js, TypeScript, Tailwind CSS, HTML, CSS
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="dark-panel p-4">
+                        <h5 style="color:#64ffda;">Backend</h5>
+                        <p style="color:#94a3b8; margin:0; font-size:0.9em;">
+                            Flask, Node.js, Express, PostgreSQL, REST APIs, Socket.io
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="dark-panel p-4">
+                        <h5 style="color:#64ffda;">Tools &amp; Platforms</h5>
+                        <p style="color:#94a3b8; margin:0; font-size:0.9em;">
+                            Git, GitHub, Vercel, Render, Railway, Supabase, Vite
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 2: Content + Sidebar (8/4)
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 2 — Content + Sidebar</span>
+            <h2>Project Detail + Quick Links</h2>
+            <p class="ex-desc">Main content takes 8 columns on large screens; sidebar takes 4. Both stack on mobile.</p>
+
+            <div class="row g-3">
+                <main class="col-12 col-lg-8">
+                    <div class="dark-panel p-4">
+                        <h4 style="color:#64ffda;">StatScout</h4>
+                        <p style="color:#94a3b8; font-size:0.9em;">
+                            StatScout is a full-stack multi-sport analytics platform that delivers real-time
+                            betting odds, hit rates, and custom trust scores for NBA player props and soccer markets.
+                            Built with React on the frontend and Flask on the backend, with a PostgreSQL database
+                            hosted on Supabase. The live projection engine takes a player's first-half stats and
+                            estimates their full-game total using weighted historical averages.
+                        </p>
+                        <p style="color:#94a3b8; font-size:0.9em; margin-bottom:0;">
+                            Tech stack: React, Flask, PostgreSQL, Supabase, Vercel, Render.
+                        </p>
+                    </div>
+                </main>
+
+                <aside class="col-12 col-lg-4">
+                    <div class="dark-panel p-4">
+                        <h5 style="color:#e2e8f0; font-family:'Space Grotesk',sans-serif;">Quick Links</h5>
+                        <ul style="padding-left:18px; margin:0; color:#94a3b8; font-size:0.9em;">
+                            <li><a href="https://statscout.vercel.app/" target="_blank" style="color:#64ffda;">Live Site</a></li>
+                            <li><a href="projects.html#statscout" style="color:#64ffda;">Project Details</a></li>
+                            <li><a href="https://github.com/SamAduG1/statscout" target="_blank" style="color:#64ffda;">GitHub Repo</a></li>
+                            <li><a href="contact.html" style="color:#64ffda;">Contact Me</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 3: Utility Classes Only
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 3 — Utilities</span>
+            <h2>Utility Classes: Spacing, Color, Typography</h2>
+            <p class="ex-desc">No custom CSS below this line. All styling is Bootstrap utility classes only.</p>
+
+            <div class="p-4 rounded text-center mb-4 ex3-primary">
+                <h3 class="mb-2">Software Engineering Student</h3>
+                <p class="mb-0">Miami University &bull; B.S. Software Engineering &bull; Graduating May 2026</p>
+            </div>
+
+            <div class="p-3 rounded ex3-secondary">
+                <p class="mb-1 fw-bold" style="color:#64ffda;">Currently building:</p>
+                <p class="mb-0" style="color:#94a3b8; font-size:0.9em;">
+                    StatScout, ApplyTrack, BuzzBeats, and a senior capstone data visualization toolkit.
+                    All four are deployed to production environments.
+                </p>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 4: Responsive Navbar
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 4 — Navbar</span>
+            <h2>Responsive Bootstrap Navbar</h2>
+            <p class="ex-desc">Collapses to a hamburger menu on small screens. Resize the window to see it toggle.</p>
+
+            <nav id="ex4-nav" class="navbar navbar-expand-lg rounded" style="padding: 10px 20px;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">SAG</a>
+
+                    <button class="navbar-toggler" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#ex4NavLinks"
+                            aria-controls="ex4NavLinks" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ex4NavLinks">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 5: 3 Cards in a Row
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 5 — Cards</span>
+            <h2>Project Cards</h2>
+            <p class="ex-desc">Three equal-height project cards, stacking on mobile and side-by-side on medium screens and up.</p>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 ex5-card">
+                        <img class="card-img-top" src="images/statscout.png" alt="StatScout screenshot">
+                        <div class="card-body">
+                            <h5 class="card-title">StatScout</h5>
+                            <p class="card-text">
+                                Multi-sport analytics platform with real-time betting odds,
+                                hit rates, and trust scores for NBA and soccer markets.
+                            </p>
+                            <a class="btn btn-primary" href="https://statscout.vercel.app/" target="_blank">Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 ex5-card">
+                        <img class="card-img-top" src="images/applytrack.png" alt="ApplyTrack screenshot">
+                        <div class="card-body">
+                            <h5 class="card-title">ApplyTrack</h5>
+                            <p class="card-text">
+                                Full-stack job application manager with a Kanban board,
+                                dashboard analytics, and JWT authentication.
+                            </p>
+                            <a class="btn btn-primary" href="https://job-tracker-three-ochre.vercel.app/" target="_blank">Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 ex5-card">
+                        <img class="card-img-top" src="images/buzzbeats.png" alt="BuzzBeats screenshot">
+                        <div class="card-body">
+                            <h5 class="card-title">BuzzBeats</h5>
+                            <p class="card-text">
+                                Jackbox-style multiplayer music trivia with 5 game modes,
+                                600+ songs, and in-browser Web Audio API synthesis.
+                            </p>
+                            <a class="btn btn-primary" href="https://buzz-beats.vercel.app/" target="_blank">Live Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 6: Modal
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 6 — Modal</span>
+            <h2>Modal: Open to Connect</h2>
+            <p class="ex-desc">Click the button below to open a Bootstrap modal dialog.</p>
+
+            <button class="btn" type="button"
+                    data-bs-toggle="modal" data-bs-target="#connectModal"
+                    style="background-color:#64ffda; color:#0a0e1a; font-family:'Space Grotesk',sans-serif; font-weight:700;">
+                Let's Connect
+            </button>
+
+            <div class="modal fade" id="connectModal" tabindex="-1"
+                 aria-labelledby="connectModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="connectModalLabel">Let's Build Something Together</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="color:#94a3b8; font-size:0.92em; line-height:1.7;">
+                            I'm currently open to full-time roles, internships, and collaboration
+                            starting Summer / Fall 2026. If you have an interesting problem to solve
+                            or just want to talk shop, I'd love to hear from you.
+                            <br><br>
+                            Reach me at <a href="mailto:sa1000desam@gmail.com" style="color:#64ffda;">sa1000desam@gmail.com</a>
+                            or use the Contact page.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                    style="background-color:#1e293b; border-color:#334155;">Close</button>
+                            <a href="contact.html" class="btn"
+                               style="background-color:#64ffda; color:#0a0e1a; font-family:'Space Grotesk',sans-serif; font-weight:700;">
+                                Go to Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Exercise 7: Responsive Breakpoints (1 → 2 → 4)
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Exercise 7 — Responsive Breakpoints</span>
+            <h2>Tech Stack: 1 to 2 to 4 Columns</h2>
+            <p class="ex-desc">
+                Mobile: 1 per row. Tablet (sm): 2 per row. Desktop (lg): 4 per row.
+                Resize the window to watch the layout shift.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="ex7-block p-4">React / Next.js</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="ex7-block p-4">Flask / Node.js</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="ex7-block p-4">PostgreSQL / Supabase</div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="ex7-block p-4">Vercel / Render / Railway</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="ex-divider">
+
+        <!-- ═══════════════════════════════════════
+             Bonus: Form Layout + Validation
+        ════════════════════════════════════════ -->
+        <div class="exercise-block">
+            <span class="exercise-label">Bonus — Form Layout</span>
+            <h2>Contact Form with Validation</h2>
+            <p class="ex-desc">Bootstrap form layout with an alert feedback message on submit.</p>
+
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Jane">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Doe">
+                </div>
+
+                <div class="col-12">
+                    <label for="emailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="jane@example.com">
+                </div>
+
+                <div class="col-12">
+                    <label for="messageInput" class="form-label">Message</label>
+                    <textarea class="form-control" id="messageInput" rows="3"
+                              placeholder="What would you like to talk about?"></textarea>
+                </div>
+
+                <div class="col-12">
+                    <button class="btn" type="button" id="bonus-submit">Send Message</button>
+                </div>
+
+                <div class="col-12">
+                    <div id="formMsg" class="alert d-none" role="alert"></div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sam Adu-Gyapong. All Rights Reserved.</p>
+        <p>
+            <a href="https://github.com/SamAduG1" target="_blank">GitHub</a> |
+            <a href="https://www.linkedin.com/in/sam-adu-gyapong-6a8b8130a/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap 5.3.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bonus form validation -->
+    <script>
+        document.getElementById("bonus-submit").addEventListener("click", function () {
+            var first = document.getElementById("firstName").value.trim();
+            var email = document.getElementById("emailInput").value.trim();
+            var msg   = document.getElementById("formMsg");
+
+            msg.classList.remove("d-none", "alert-success", "alert-danger");
+
+            if (first === "" || email === "") {
+                msg.classList.add("alert-danger");
+                msg.textContent = "Please fill in at least your name and email before submitting.";
+            } else {
+                msg.classList.add("alert-success");
+                msg.textContent = "Thanks, " + first + "! Your message has been received. I will get back to you soon.";
+            }
+        });
+    </script>
+
+</body>
+</html>
