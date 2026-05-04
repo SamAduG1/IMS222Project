@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jQuery Interactions - Sam Adu-Gyapong Portfolio">
+    <title>jQuery | Sam Adu-Gyapong</title>
+
+    <!-- jQuery CDN — must be loaded before any jQuery scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Portfolio stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- =====================================================
+         INTERACTION 1: Hover to reveal project tech stack
+         mouseenter / mouseleave → slideDown / slideUp
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        $(".project-hover-card").mouseenter(function() {
+            $(this).find(".hover-tech").slideDown(300);
+        }).mouseleave(function() {
+            $(this).find(".hover-tech").slideUp(250);
+        });
+    });
+    </script>
+
+    <!-- =====================================================
+         INTERACTION 2: Toggle skill category panels
+         click → toggle(400) — show/hide with animation
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        $(".skill-toggle-btn").click(function() {
+            var target = $(this).data("target");
+            $("#" + target).toggle(400);
+            $(this).text(function(i, text) {
+                return text === "Show" ? "Hide" : "Show";
+            });
+        });
+    });
+    </script>
+
+    <!-- =====================================================
+         INTERACTION 3: Slide "Read More" bio content
+         click → slideToggle(500) — expand / collapse
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        $("#readMoreBtn").click(function() {
+            $("#extraBio").slideToggle(500);
+            $(this).text(function(i, text) {
+                return text === "Read More" ? "Read Less" : "Read More";
+            });
+        });
+    });
+    </script>
+
+    <!-- =====================================================
+         INTERACTION 4: Personalized greeting form
+         .val() captures input → .html() displays it
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        $("#greetBtn").click(function() {
+            var name = $("#visitorName").val().trim();
+            if (name === "") {
+                $("#greetOutput").text("Please enter your name to continue.");
+            } else {
+                $("#greetOutput").html(
+                    "Hey <strong>" + name + "</strong>! Thanks for stopping by. " +
+                    "Feel free to explore my projects or reach out via the Contact page."
+                );
+            }
+        });
+
+        // Also trigger on Enter key
+        $("#visitorName").keypress(function(e) {
+            if (e.which === 13) $("#greetBtn").click();
+        });
+    });
+    </script>
+
+    <!-- =====================================================
+         INTERACTION 5: Append questions to a list
+         .val() reads input → .append() adds <li> with counter
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        var counter = 1;
+        $("#addQuestionBtn").click(function() {
+            var question = $("#questionInput").val().trim();
+            if (question !== "") {
+                $("#questionList").append(
+                    "<li><span class='q-num'>" + counter + ".</span> " + question + "</li>"
+                );
+                $("#questionInput").val("").focus();
+                counter++;
+            }
+        });
+
+        $("#questionInput").keypress(function(e) {
+            if (e.which === 13) $("#addQuestionBtn").click();
+        });
+    });
+    </script>
+
+    <!-- =====================================================
+         INTERACTION 6: Fade a contact CTA in and out
+         click → fadeToggle(600)
+    ====================================================== -->
+    <script>
+    $(document).ready(function() {
+        $("#fadeToggleBtn").click(function() {
+            $("#ctaBanner").fadeToggle(600);
+            $(this).text(function(i, text) {
+                return text === "Show Contact Banner" ? "Hide Contact Banner" : "Show Contact Banner";
+            });
+        });
+    });
+    </script>
+
+    <style>
+        /* ── jQuery page section containers ── */
+        .jq-section {
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 22px;
+        }
+
+        .jq-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 6px;
+            color: #e2e8f0;
+        }
+
+        .jq-section .jq-desc {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .jq-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72em;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* ── Interaction 1: hover cards ── */
+        .hover-card-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .project-hover-card {
+            flex: 1;
+            min-width: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(100,255,218,0.15);
+            cursor: default;
+            transition: border-color 0.25s;
+        }
+
+        .project-hover-card:hover {
+            border-color: #64ffda;
+        }
+
+        .project-hover-card img {
+            width: 100%;
+            height: 155px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hover-card-label {
+            padding: 10px 14px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            color: #e2e8f0;
+            font-size: 0.95em;
+        }
+
+        .hover-tech {
+            display: none;
+            padding: 10px 14px;
+            background: rgba(100,255,218,0.08);
+            border-top: 1px solid rgba(100,255,218,0.12);
+            color: #64ffda;
+            font-size: 0.82em;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── Interaction 2: skill toggles ── */
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .skill-toggle-btn {
+            background: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            padding: 5px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+            width: 60px;
+        }
+
+        .skill-toggle-btn:hover {
+            background-color: rgba(100,255,218,0.1);
+        }
+
+        .skill-row-label {
+            color: #e2e8f0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .skill-panel {
+            display: none;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+        }
+
+        .skill-panel ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .skill-panel li {
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin-bottom: 4px;
+            line-height: 1.6;
+        }
+
+        /* ── Interaction 3: slide bio ── */
+        .bio-preview {
+            color: #94a3b8;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        #extraBio {
+            display: none;
+            color: #94a3b8;
+            line-height: 1.75;
+            border-top: 1px solid rgba(100,255,218,0.1);
+            padding-top: 14px;
+            margin-top: 4px;
+        }
+
+        .jq-read-btn {
+            background: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.88em;
+            transition: background-color 0.2s;
+        }
+
+        .jq-read-btn:hover {
+            background-color: rgba(100,255,218,0.1);
+        }
+
+        /* ── Interaction 4 & 5: form elements ── */
+        .jq-input-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .jq-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(100,255,218,0.25);
+            border-radius: 6px;
+            color: #e2e8f0;
+            padding: 10px 14px;
+            font-size: 0.92em;
+            font-family: 'Inter', sans-serif;
+            flex: 1;
+            min-width: 200px;
+            max-width: 320px;
+        }
+
+        .jq-input::placeholder { color: #8892b0; opacity: 0.7; }
+
+        .jq-input:focus {
+            outline: none;
+            border-color: #64ffda;
+        }
+
+        .jq-btn {
+            background: #64ffda;
+            color: #0a0e1a;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.88em;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .jq-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(100,255,218,0.3);
+        }
+
+        .jq-btn-outline {
+            background: transparent;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            padding: 10px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.88em;
+            transition: background-color 0.2s;
+        }
+
+        .jq-btn-outline:hover {
+            background-color: rgba(100,255,218,0.1);
+        }
+
+        .jq-output {
+            padding: 12px 16px;
+            background: rgba(100,255,218,0.06);
+            border-left: 3px solid #64ffda;
+            border-radius: 0 6px 6px 0;
+            color: #e2e8f0;
+            font-size: 0.92em;
+            min-height: 20px;
+            line-height: 1.7;
+        }
+
+        /* ── Interaction 5: question list ── */
+        #questionList {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px 0;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        #questionList li {
+            padding: 9px 12px;
+            border-bottom: 1px solid rgba(100,255,218,0.08);
+            color: #94a3b8;
+            font-size: 0.9em;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        #questionList li:last-child { border-bottom: none; }
+
+        .q-num {
+            color: #64ffda;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        /* ── Interaction 6: CTA banner ── */
+        #ctaBanner {
+            display: none;
+            margin-top: 18px;
+            background: linear-gradient(135deg, #64ffda, #60a5fa);
+            color: #0a0e1a;
+            padding: 28px 32px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #ctaBanner h3 {
+            color: #0a0e1a;
+            font-size: 1.4em;
+            margin-bottom: 6px;
+        }
+
+        #ctaBanner p {
+            color: #0a1628;
+            margin-bottom: 18px;
+            font-size: 0.95em;
+        }
+
+        #ctaBanner a {
+            background-color: #0a0e1a;
+            color: #64ffda;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        #ctaBanner a:hover { opacity: 0.85; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">SAG</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="jquery.html">jQuery</a></li>
+                <li><a href="materialize.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Page intro -->
+        <section id="jq-hero">
+            <h1>jQuery Interactions</h1>
+            <p>
+                This page demonstrates six <strong>jQuery-powered interactions</strong> built into a real developer portfolio.
+                Each colored section below showcases a different jQuery technique, from hover effects and slide animations
+                to form handling and dynamic list building.
+                jQuery is loaded via CDN and all interactions are initialized inside <code style="color:#64ffda;">$(document).ready()</code>.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 1 — mouseenter / mouseleave → slideDown / slideUp
+             Hover over a project card to reveal its tech stack.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #0d1f3a;">
+            <span class="jq-label">Interaction 1 — Hover</span>
+            <h2>Hover to Reveal Tech Stack</h2>
+            <p class="jq-desc">Move your cursor over any project card to slide down its technology details.</p>
+
+            <div class="hover-card-grid">
+
+                <div class="project-hover-card">
+                    <img src="images/statscout.png" alt="StatScout screenshot">
+                    <div class="hover-card-label">StatScout</div>
+                    <div class="hover-tech">
+                        React &bull; Flask &bull; PostgreSQL &bull; Supabase &bull; Vercel
+                    </div>
+                </div>
+
+                <div class="project-hover-card">
+                    <img src="images/applytrack.png" alt="ApplyTrack screenshot">
+                    <div class="hover-card-label">ApplyTrack</div>
+                    <div class="hover-tech">
+                        React &bull; Flask &bull; PostgreSQL &bull; JWT &bull; Render
+                    </div>
+                </div>
+
+                <div class="project-hover-card">
+                    <img src="images/buzzbeats.png" alt="BuzzBeats screenshot">
+                    <div class="hover-card-label">BuzzBeats</div>
+                    <div class="hover-tech">
+                        Next.js 15 &bull; Socket.io &bull; TypeScript &bull; Railway &bull; iTunes API
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(100,255,218,0.08); margin:0 0 22px;">
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 2 — toggle(400)
+             Click to show or hide each skill category panel.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #1f0d3a;">
+            <span class="jq-label">Interaction 2 — Toggle</span>
+            <h2>Toggle Skill Categories</h2>
+            <p class="jq-desc">Click "Show" on any category to expand it, or "Hide" to collapse it.</p>
+
+            <div class="skill-row">
+                <button class="skill-toggle-btn" data-target="langPanel">Show</button>
+                <span class="skill-row-label">Languages</span>
+            </div>
+            <div id="langPanel" class="skill-panel">
+                <ul>
+                    <li>JavaScript</li><li>Python</li><li>Java</li>
+                    <li>C++</li><li>SQL</li><li>TypeScript</li>
+                </ul>
+            </div>
+
+            <div class="skill-row">
+                <button class="skill-toggle-btn" data-target="frameworkPanel">Show</button>
+                <span class="skill-row-label">Frameworks &amp; Libraries</span>
+            </div>
+            <div id="frameworkPanel" class="skill-panel">
+                <ul>
+                    <li>React &amp; Next.js</li><li>Flask</li><li>Node.js / Express</li>
+                    <li>Socket.io</li><li>Tailwind CSS</li>
+                </ul>
+            </div>
+
+            <div class="skill-row">
+                <button class="skill-toggle-btn" data-target="toolPanel">Show</button>
+                <span class="skill-row-label">Tools &amp; Platforms</span>
+            </div>
+            <div id="toolPanel" class="skill-panel">
+                <ul>
+                    <li>Git &amp; GitHub</li><li>PostgreSQL / Supabase</li>
+                    <li>Vercel</li><li>Render</li><li>Railway</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(100,255,218,0.08); margin:0 0 22px;">
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 3 — slideToggle(500)
+             "Read More" expands and collapses additional bio text.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #1f2a0d;">
+            <span class="jq-label">Interaction 3 — Slide</span>
+            <h2>Slide: Read More About Me</h2>
+            <p class="jq-desc">Click the button to slide in more of my story.</p>
+
+            <p class="bio-preview">
+                I'm a Software Engineering student at Miami University graduating May 2026.
+                I build full-stack web applications using React, Flask, and PostgreSQL,
+                and I deploy everything I make to real production environments.
+                I care deeply about writing clean, maintainable code and designing experiences that feel intuitive.
+            </p>
+
+            <div id="extraBio">
+                <p>
+                    Outside of coding, I stay active by going to the gym regularly, which helps me maintain
+                    the focus and discipline that carries into my work as a developer.
+                    I'm a big sports fan, especially basketball, which inspired me to build StatScout.
+                    I also love exploring new music, which led to BuzzBeats, a real-time multiplayer music trivia game
+                    built with Socket.io and the iTunes Search API.
+                </p>
+                <p>
+                    I believe the best developers are curious people who are genuinely interested in the <em>problems</em>
+                    they are solving, not just the code they are writing.
+                    My goal after graduation is to join a product-focused engineering team where I can keep growing
+                    and contribute to something meaningful.
+                </p>
+            </div>
+
+            <button id="readMoreBtn" class="jq-read-btn">Read More</button>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(100,255,218,0.08); margin:0 0 22px;">
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 4 — .val() + .html()
+             Captures visitor's name from an input and personalizes a greeting.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #0d2a2a;">
+            <span class="jq-label">Interaction 4 — Form Input</span>
+            <h2>Personalize Your Visit</h2>
+            <p class="jq-desc">Enter your name and I'll greet you personally. Press Enter or click the button.</p>
+
+            <div class="jq-input-row">
+                <input type="text" id="visitorName" class="jq-input" placeholder="Your name">
+                <button id="greetBtn" class="jq-btn">Say Hello</button>
+            </div>
+            <div id="greetOutput" class="jq-output"></div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(100,255,218,0.08); margin:0 0 22px;">
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 5 — .val() + .append() with counter
+             Visitors type questions; each click appends a numbered list item.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #2a0d1a;">
+            <span class="jq-label">Interaction 5 — Append</span>
+            <h2>Submit a Question for Sam</h2>
+            <p class="jq-desc">
+                Have a question about my projects, experience, or tech stack?
+                Type it below and hit Add. Each question is logged to the list.
+            </p>
+
+            <ul id="questionList"></ul>
+
+            <div class="jq-input-row">
+                <input type="text" id="questionInput" class="jq-input" placeholder="Type your question here...">
+                <button id="addQuestionBtn" class="jq-btn">Add</button>
+            </div>
+            <p style="color:#8892b0; font-size:0.82em; margin-top:8px;">
+                Tip: Real questions? Send them through the <a href="contact.html">Contact page</a>.
+            </p>
+        </div>
+
+        <hr style="border:none; border-top:1px solid rgba(100,255,218,0.08); margin:0 0 22px;">
+
+        <!-- ═══════════════════════════════════════════════════
+             SECTION 6 — fadeToggle(600)
+             Button fades a contact CTA banner in and out.
+        ════════════════════════════════════════════════════ -->
+        <div class="jq-section" style="background-color: #2a1a00;">
+            <span class="jq-label">Interaction 6 — Fade</span>
+            <h2>Fade: Toggle Contact Banner</h2>
+            <p class="jq-desc">Click the button to fade a call-to-action in and out of view.</p>
+
+            <button id="fadeToggleBtn" class="jq-btn-outline">Show Contact Banner</button>
+
+            <div id="ctaBanner">
+                <h3>Let's Build Something Together</h3>
+                <p>Open to full-time roles, internships, and collaboration starting Summer / Fall 2026.</p>
+                <a href="contact.html">Get In Touch</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sam Adu-Gyapong. All Rights Reserved.</p>
+        <p>
+            <a href="https://github.com/SamAduG1" target="_blank">GitHub</a> |
+            <a href="https://www.linkedin.com/in/sam-adu-gyapong-6a8b8130a/" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" title="Back to top">&#8679;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
